@@ -20,7 +20,6 @@ shared.AimLockSettings = {
 }
 
 local FOV_Circle = Drawing.new("Circle")
-FOV_Circle.Visible = true
 FOV_Circle.Thickness = 1
 FOV_Circle.Filled = false
 FOV_Circle.Color = shared.AimLockSettings.FOV_Color
@@ -111,7 +110,7 @@ local old; old = hookmetamethod(game, "__index", function(self, idx)
 end)
 
 game:GetService("RunService").RenderStepped:Connect(function()
-    if shared.AimLockSettings.FOV_Visible then
+    if shared.AimLockSettings.FOV_Visible == true then
         FOV_Circle.Visible = true
     else
         FOV_Circle.Visible = false
