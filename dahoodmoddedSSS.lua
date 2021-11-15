@@ -104,7 +104,12 @@ local Target = nil
 
 local old; old = hookmetamethod(game, "__index", function(self, idx)
     if (idx == 'Hit' and math.random(1,1) == 1) and shared.AimLockSettings.SilentAimEnabled then
-        return CFrame.new(TargetPart.Position)
+        local ScreenPoint = Camera:WorldToScreenPoint(TargetPart, math.huge).Position
+		local VectorDistance = (Vector2.new(UIS:GetMouseLocation().X, UIS:GetMouseLocation().Y) - Vector2.new(ScreenPoint.X, ScreenPoint.Y)).Magnitude
+
+        if VectorDistance < shared.AimLockSettings.FOV then
+            return CFrame.new(TargetPart.Position)
+        end
     end
     return old(self, idx) 
 end)
