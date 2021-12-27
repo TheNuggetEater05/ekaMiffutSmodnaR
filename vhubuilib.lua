@@ -143,21 +143,5 @@ function library:CreateWindow(text, gamename)
 	
 	return sections
 end
-local window = library:CreateWindow("v-hub", "baseplate")
 
-window:AddToggle("Abc", false, "right", function(toggled)
-    if toggled then
-        print("Toggled")
-    else
-        print("Untoggled!")
-    end
-end)
-
-window:AddToggle("def", false, "left", function(toggled)
-    if toggled then
-        print("1Toggled")
-    else
-        print("1Untoggled!")
-    end
-end)
 return library
